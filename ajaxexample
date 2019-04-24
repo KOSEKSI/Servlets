@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ajax</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+<span id="display"></span>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
+		  type: "POST",
+		  url: "YearController",
+		  success: function(data){
+		     $("#display").html(data);
+		  }
+		});
+});
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+servlet
+-----------------------------
+package com.ramsoft.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/YearController")
+public class YearController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
+    public YearController() {
+        super();
+       
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		 PrintWriter out = response.getWriter();
+		 out.println("<select><option>2009</option><option>2010</option><option>2011</option><option>2012</option></select>");
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		doGet(request, response);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
